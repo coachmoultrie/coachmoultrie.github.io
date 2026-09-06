@@ -146,7 +146,7 @@ main .hero-box h1,
    SECTION 2: ABOUT THE COACH & LIST OF CLIENTS LAYOUT
    ========================================================================== */
 
-/* Full-width content wrapper */
+/* Container wrapper - Flex row to place items side-by-side aligned at the top */
 .section-second-content {
     position: relative !important;
     z-index: 2 !important;
@@ -154,11 +154,13 @@ main .hero-box h1,
     max-width: 100% !important;
     margin-top: 2rem !important;
     display: flex !important;
-    flex-direction: column !important;
-    gap: 0 !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important; /* Aligns both boxes to the top line */
+    gap: 2rem !important;
 }
 
-/* Far Left Box: About the Coach */
+/* Far Left Box: About the Coach (Unchanged) */
 .about-coach-box {
     background-color: rgba(0, 0, 0, 0.8) !important;
     border: 3px solid #125070 !important;
@@ -175,6 +177,7 @@ main .hero-box h1,
     width: auto !important;
     align-self: flex-start !important;
     margin-left: 0 !important;
+    margin-top: 0 !important;
 }
 
 /* Coach Image */
@@ -209,7 +212,7 @@ main .hero-box h1,
     }
 }
 
-/* Far Right Box: List of Clients (~60% section height & pulled up) */
+/* Far Right Box: List of Clients (15px below top of Coach box) */
 .vertical-list-box {
     background-color: rgba(0, 0, 0, 0.8) !important;
     border: 3px solid #125070 !important;
@@ -217,8 +220,8 @@ main .hero-box h1,
     padding: 2.5rem !important;
     width: 420px !important;
     min-height: 55vh !important;
-    align-self: flex-end !important;
-    margin-top: -120px !important;
+    align-self: flex-start !important;
+    margin-top: 15px !important;        /* Moves top edge 15px down from coach box top */
     margin-right: 0 !important;
     backdrop-filter: blur(4px) !important;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6) !important;
@@ -251,14 +254,14 @@ main .hero-box h1,
             
             /* External Profile Hyperlink Styling */
             a {
-                color: #125070 !important;
-		font-weight: bold !important;
-                text-decoration: none !important;
+                color: #125070 !important;          /* Accent Blue */
+                font-weight: bold !important;       /* Bold text */
+                text-decoration: none !important;   /* No underline */
                 transition: color 0.2s ease !important;
 
                 &:hover {
-                    color: #8A99A6 !important;
-		    text-decoration: none !important;
+                    color: #8A99A6 !important;      /* Silver hover effect */
+                    text-decoration: none !important;
                 }
             }
 
