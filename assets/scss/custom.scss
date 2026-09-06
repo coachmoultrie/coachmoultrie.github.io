@@ -63,6 +63,10 @@ main > section:nth-of-type(2) {
     border: 10px solid #000000 !important;
     overflow: hidden !important;
     filter: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    padding: 3rem 2rem !important;
 
     &::before {
         content: '' !important;
@@ -82,7 +86,7 @@ main > section:nth-of-type(2) {
     }
 }
 
-/* Container rectangle sitting above the filtered background */
+/* Hero Box Container */
 .hero-box {
     position: relative !important;
     z-index: 2 !important;
@@ -96,6 +100,7 @@ main > section:nth-of-type(2) {
     backdrop-filter: blur(4px) !important;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
 }
+
 
 /* ==========================================================================
    HERO TITLE (LOGO-MATCHED ATHLETIC BLOCK FONT)
@@ -136,7 +141,139 @@ main .hero-box h1,
     margin-bottom: 1rem !important;
 }
 
-/* Clear transparent backgrounds & zero padding on main layout elements */
+
+/* ==========================================================================
+   SECTION 2: ABOUT THE COACH & LIST OF CLIENTS LAYOUT
+   ========================================================================== */
+
+/* Full-width content wrapper */
+.section-second-content {
+    position: relative !important;
+    z-index: 2 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-top: 2rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+}
+
+/* Far Left Box: About the Coach */
+.about-coach-box {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    border: 3px solid #125070 !important;
+    border-radius: 10px !important;
+    padding: 2.5rem !important;
+    min-height: 400px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 2.5rem !important;
+    backdrop-filter: blur(4px) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6) !important;
+    max-width: 1050px !important;
+    width: auto !important;
+    align-self: flex-start !important;
+    margin-left: 0 !important;
+}
+
+/* Coach Image */
+.about-coach-img {
+    width: 340px !important;
+    height: 360px !important;
+    object-fit: cover !important;
+    border-radius: 8px !important;
+    border: 3px solid #8A99A6 !important;
+    flex-shrink: 0 !important;
+}
+
+.about-coach-text {
+    color: #ffffff !important;
+    
+    h2 {
+        font-family: 'Alfa Slab One', cursive !important;
+        color: #8A99A6 !important;
+        -webkit-text-fill-color: #8A99A6 !important;
+        -webkit-text-stroke: 1.8px #000000 !important;
+        font-size: 2.5rem !important;
+        margin-top: 0 !important;
+        margin-bottom: 0.75rem !important;
+        text-transform: uppercase !important;
+    }
+
+    p {
+        color: #e0e0e0 !important;
+        font-size: 1.15rem !important;
+        line-height: 1.6 !important;
+        margin: 0 !important;
+    }
+}
+
+/* Far Right Box: List of Clients (~60% section height & pulled up) */
+.vertical-list-box {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    border: 3px solid #125070 !important;
+    border-radius: 10px !important;
+    padding: 2.5rem !important;
+    width: 420px !important;
+    min-height: 55vh !important;
+    align-self: flex-end !important;
+    margin-top: -120px !important;
+    margin-right: 0 !important;
+    backdrop-filter: blur(4px) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+
+    h3 {
+        font-family: 'Alfa Slab One', cursive !important;
+        color: #8A99A6 !important;
+        -webkit-text-fill-color: #8A99A6 !important;
+        -webkit-text-stroke: 1.5px #000000 !important;
+        font-size: 1.8rem !important;
+        margin-top: 0 !important;
+        margin-bottom: 1.5rem !important;
+        text-transform: uppercase !important;
+    }
+
+    ul {
+        list-style-type: disc !important;
+        padding-left: 1.5rem !important;
+        margin: 0 !important;
+        flex-grow: 1 !important;
+
+        li {
+            color: #ffffff !important;
+            font-size: 1.15rem !important;
+            margin-bottom: 1.25rem !important;
+            line-height: 1.6 !important;
+            
+            /* External Profile Hyperlink Styling */
+            a {
+                color: #125070 !important;
+		font-weight: bold !important;
+                text-decoration: none !important;
+                transition: color 0.2s ease !important;
+
+                &:hover {
+                    color: #8A99A6 !important;
+		    text-decoration: none !important;
+                }
+            }
+
+            &:last-child {
+                margin-bottom: 0 !important;
+            }
+        }
+    }
+}
+
+
+/* ==========================================================================
+   FOOTER & GENERAL LAYOUT CLEANUP
+   ========================================================================== */
+
 main,
 .site-content,
 .content {
@@ -145,7 +282,6 @@ main,
     padding-bottom: 0 !important;
 }
 
-/* Footer sits flush below Section 2 with deep teal blue text */
 footer,
 .site-footer {
     position: relative !important;
@@ -441,7 +577,7 @@ ul.nav-links li a:hover {
         padding: 1.25rem 0.75rem !important;
     }
 
-    /* Force mobile title to fit on 2 lines max */
+    /* Mobile Title Scale */
     .hero-box h1,
     main .hero-box h1,
     .hero .hero-box h1 {
@@ -452,6 +588,31 @@ ul.nav-links li a:hover {
              1px -1px 0 #125070,
             -1px  1px 0 #125070,
              1px  1px 0 #125070 !important;
+    }
+
+    /* Section 2 Mobile Stacking */
+    .section-second-content {
+        margin-top: 1rem !important;
+    }
+
+    .about-coach-box {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        width: 100% !important;
+        min-height: auto !important;
+        padding: 1.5rem !important;
+    }
+
+    .about-coach-img {
+        width: 100% !important;
+        height: 240px !important;
+    }
+
+    .vertical-list-box {
+        width: 100% !important;
+        min-height: auto !important;
+        margin-top: 1.5rem !important;
+        align-self: center !important;
     }
 
     .nav-container {
@@ -602,7 +763,6 @@ ul.nav-links li a:hover {
 }
 
 @media screen and (max-width: 480px) {
-    /* Extra shrink cap for smaller mobile displays */
     .hero-box h1,
     main .hero-box h1,
     .hero .hero-box h1 {
@@ -612,7 +772,7 @@ ul.nav-links li a:hover {
 
 
 /* ==========================================================================
-   TELEPORTED DRAWER SAFETY RULES
+   TELEPORTED DRAWER SAFETY RULES & SCROLL LOCK
    ========================================================================== */
 
 body > #nav-menu {
@@ -633,11 +793,6 @@ body > #nav-overlay {
     margin: 0 !important;
     padding: 0 !important;
 }
-
-
-/* ==========================================================================
-   PREVENT BODY HORIZONTAL SCROLLING WHEN DRAWER IS OPEN
-   ========================================================================== */
 
 body.mobile-menu-open {
     overflow-x: hidden !important;
