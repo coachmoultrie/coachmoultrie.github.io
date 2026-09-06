@@ -98,29 +98,44 @@ main > section:nth-of-type(2) {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* Coach Moultrie's DLINE Academy Title: Logo-Matched Athletic Block Font */
+/* Responsive Title: Automatically scales down on mobile to stay on 2 lines max */
 .hero-box h1 {
     font-family: 'Alfa Slab One', cursive !important;
-    font-size: 3.8rem !important;
-    letter-spacing: 2px !important;
+    font-size: clamp(1.5rem, 6vw, 3.8rem) !important; /* Scales smoothly from mobile up to desktop */
+    line-height: 1.1 !important;                       /* Prevents large gaps between line 1 and 2 */
+    letter-spacing: 0.5px !important;                  /* Tightened slightly so words stay wide */
+    word-break: normal !important;                     /* Prevents words from snapping mid-letter */
+    hyphens: none !important;
     text-transform: uppercase !important;
     margin-bottom: 1rem !important;
 
-    /* Silver metallic fill with fallback */
-    color: #DFE8ED !important;
-    -webkit-text-fill-color: #DFE8ED !important;
+    /* Silver metallic fill */
+    color: #8A99A6 !important;
+    -webkit-text-fill-color: #8A99A6 !important;
 
-    /* 3px Solid Black outer stroke */
-    -webkit-text-stroke: 3px #000000 !important;
+    /* Responsive stroke thickness so mobile borders don't drown out letters */
+    -webkit-text-stroke: 1.5px #000000 !important;
 
-    /* Multi-layered dark blue outline + 3D drop shadow inspired by the logo plaque */
     text-shadow: 
-        -2px -2px 0 #125070,  
-         2px -2px 0 #125070,
-        -2px  2px 0 #125070,
-         2px  2px 0 #125070,
-        -4px  4px 0 #000000,   /* Bevel offset shadow */
-         0px 10px 15px rgba(0, 0, 0, 0.9) !important;
+        -1.5px -1.5px 0 #125070,  
+         1.5px -1.5px 0 #125070,
+        -1.5px  1.5px 0 #125070,
+         1.5px  1.5px 0 #125070,
+        -2px 2px 0 #000000,
+         0px 6px 10px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Specific overrides for small screen viewports */
+@media screen and (max-width: 768px) {
+    .hero-box h1 {
+        font-size: 5.5vw !important; /* Forces text to shrink enough to fit within 2 lines */
+        -webkit-text-stroke: 1px #000000 !important; /* Thinner stroke on small screens */
+    }
+    
+    .hero-box {
+        padding: 1.5rem 1rem !important; /* Gives more horizontal room inside the container */
+        width: 95% !important;
+    }
 }
 
 /* General hero text */
