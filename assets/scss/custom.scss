@@ -5,7 +5,7 @@
 body {
     margin: 0 !important;
     padding: 0 !important;
-    background-color: #384959 !important;
+    background-color: #404045 !important; /* Updated background color */
 }
 
 /* Hide background particles or canvas animations */
@@ -27,10 +27,15 @@ canvas,
 main > section:first-of-type {
     min-height: 100vh !important;
     width: 100% !important;
+    box-sizing: border-box !important;
+    border: 10px solid #000000 !important;
     background-image: url('/images/image1.JPG') !important;
     background-position: center center !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
+    
+    /* Muted / Greyed-tone adjustments */
+    filter: grayscale(60%) brightness(85%) !important;
 }
 
 /* Section 2: Secondary area with image2.jpeg directly underneath */
@@ -38,10 +43,33 @@ main > section:first-of-type {
 main > section:nth-of-type(2) {
     min-height: 100vh !important;
     width: 100% !important;
+    box-sizing: border-box !important;
+    border: 10px solid #000000 !important;
     background-image: url('/images/image2.jpeg') !important;
     background-position: center center !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
+    
+    /* Muted / Greyed-tone adjustments */
+    filter: grayscale(60%) brightness(85%) !important;
+}
+
+/* Semi-transparent black rectangle container */
+.hero-box {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    padding: 2.5rem 3rem !important;
+    border-radius: 8px !important;
+    display: inline-block !important;
+    max-width: 90% !important;
+    backdrop-filter: blur(4px) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Ensure text inside the rectangle remains crisp and bright */
+.hero-box h1,
+.hero-box p {
+    color: #ffffff !important;
+    margin-bottom: 1rem !important;
 }
 
 /* Clear transparent backgrounds on general layout elements so images show */
@@ -54,7 +82,7 @@ footer,
 .site-footer {
     position: relative !important;
     width: 100% !important;
-    background-color: #384959 !important;
+    background-color: #000000 !important;
     z-index: 10 !important;
 }
 
@@ -177,8 +205,8 @@ div#nav-menu {
 
     box-sizing: border-box !important;
 
-    background: #384959 !important;
-    background-color: #384959 !important;
+    background: #404045 !important;
+    background-color: #404045 !important;
     background-image: none !important;
 
     border-left: 1px solid rgba(255, 255, 255, 0.15);
@@ -380,7 +408,7 @@ ul.nav-links li a {
 .nav-dropdown .nav-links a:hover,
 .nav-links a:hover,
 ul.nav-links li a:hover {
-    color: #88bcd4 !important;
+    color: #0030D4 !important;
 
     background: transparent !important;
     background-color: transparent !important;
@@ -479,8 +507,8 @@ ul.nav-links li a:hover {
         overflow-x: hidden !important;
         overflow-y: auto !important;
 
-        background: #384959 !important;
-        background-color: #384959 !important;
+        background: #404045 !important;
+        background-color: #404045 !important;
         background-image: none !important;
 
         transform: translateX(100%) !important;
@@ -618,6 +646,7 @@ ul.nav-links li a:hover {
         background-color: transparent !important;
 
         font-size: 1.15rem !important;
+
         font-weight: 600 !important;
 
         line-height: 1.2 !important;
@@ -631,7 +660,7 @@ ul.nav-links li a:hover {
     body > #nav-menu ul.nav-links li a:hover,
     body > #nav-menu .nav-links li a:hover,
     body > #nav-menu a:hover {
-        color: #88bcd4 !important;
+        color: #0030D4 !important;
 
         background: transparent !important;
         background-color: transparent !important;
