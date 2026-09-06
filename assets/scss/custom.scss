@@ -1,12 +1,12 @@
 /* ==========================================================================
-   GLOBAL BRANDING & SEQUENTIAL BACKGROUND OVERRIDES
+   GLOBAL BRANDING & BACKGROUND OVERRIDES
    ========================================================================== */
 
 html,
 body {
     margin: 0 !important;
     padding: 0 !important;
-    background-color: #080707 !important; /* Updated deep background color */
+    background-color: #080707 !important; /* Deep off-black background */
 }
 
 /* Hide background particles or canvas animations */
@@ -18,11 +18,12 @@ canvas,
     visibility: hidden !important;
 }
 
-/* --------------------------------------------------------------------------
-   SEQUENTIAL PHOTO SECTIONS (Photo 1 -> Photo 2 -> Footer)
-   -------------------------------------------------------------------------- */
 
-/* Section 1: Hero / Top area */
+/* ==========================================================================
+   SEQUENTIAL PHOTO SECTIONS (Photo 1 -> Photo 2 -> Footer)
+   ========================================================================== */
+
+/* Section 1: Hero / Top area with image1.JPG */
 .hero,
 .section-first,
 main > section:first-of-type {
@@ -32,9 +33,7 @@ main > section:first-of-type {
     box-sizing: border-box !important;
     border: 10px solid #000000 !important;
     overflow: hidden !important;
-    
-    /* Remove filter from the main container so text stays full color */
-    filter: none !important; 
+    filter: none !important; /* Keeps text inside section at 100% full color */
 
     &::before {
         content: '' !important;
@@ -48,13 +47,13 @@ main > section:first-of-type {
         background-repeat: no-repeat !important;
         background-size: cover !important;
         
-        /* Apply grayscale & brightness ONLY to the background image */
+        /* Grayscale & brightness applied ONLY to background image */
         filter: grayscale(60%) brightness(85%) !important;
         z-index: 1 !important;
     }
 }
 
-/* Section 2: Secondary area directly underneath */
+/* Section 2: Secondary area with image2.jpeg directly underneath */
 .section-second,
 main > section:nth-of-type(2) {
     position: relative !important;
@@ -63,8 +62,6 @@ main > section:nth-of-type(2) {
     box-sizing: border-box !important;
     border: 10px solid #000000 !important;
     overflow: hidden !important;
-    
-    /* Remove filter from container */
     filter: none !important;
 
     &::before {
@@ -79,66 +76,61 @@ main > section:nth-of-type(2) {
         background-repeat: no-repeat !important;
         background-size: cover !important;
         
-        /* Apply grayscale & brightness ONLY to the background image */
+        /* Grayscale & brightness applied ONLY to background image */
         filter: grayscale(60%) brightness(85%) !important;
         z-index: 1 !important;
     }
 }
 
-/* Ensure the hero-box and text sit ABOVE the background pseudo-element */
+/* Container rectangle sitting above the filtered background */
 .hero-box {
     position: relative !important;
-    z-index: 2 !important; /* Lifts content above the filtered background */
+    z-index: 2 !important;
     background-color: rgba(0, 0, 0, 0.6) !important;
     padding: 2.5rem 3rem !important;
     border-radius: 8px !important;
     display: inline-block !important;
+    width: 90% !important;
     max-width: 90% !important;
+    box-sizing: border-box !important;
     backdrop-filter: blur(4px) !important;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* Responsive Title: Automatically scales down on mobile to stay on 2 lines max */
-.hero-box h1 {
+/* ==========================================================================
+   HERO TITLE (LOGO-MATCHED ATHLETIC BLOCK FONT)
+   ========================================================================== */
+
+.hero-box h1,
+main .hero-box h1,
+.hero .hero-box h1 {
     font-family: 'Alfa Slab One', cursive !important;
-    font-size: clamp(1.5rem, 6vw, 3.8rem) !important; /* Scales smoothly from mobile up to desktop */
-    line-height: 1.1 !important;                       /* Prevents large gaps between line 1 and 2 */
-    letter-spacing: 0.5px !important;                  /* Tightened slightly so words stay wide */
-    word-break: normal !important;                     /* Prevents words from snapping mid-letter */
-    hyphens: none !important;
+    font-size: 3.8rem !important;
+    line-height: 1.05 !important;
+    letter-spacing: 1px !important;
     text-transform: uppercase !important;
     margin-bottom: 1rem !important;
+    white-space: normal !important;
+    word-break: keep-all !important;
 
     /* Silver metallic fill */
     color: #8A99A6 !important;
     -webkit-text-fill-color: #8A99A6 !important;
 
-    /* Responsive stroke thickness so mobile borders don't drown out letters */
-    -webkit-text-stroke: 1.5px #000000 !important;
+    /* 3px Solid Black outer stroke */
+    -webkit-text-stroke: 3px #000000 !important;
 
+    /* Multi-layered dark blue outline + 3D bevel shadow */
     text-shadow: 
-        -1.5px -1.5px 0 #125070,  
-         1.5px -1.5px 0 #125070,
-        -1.5px  1.5px 0 #125070,
-         1.5px  1.5px 0 #125070,
-        -2px 2px 0 #000000,
-         0px 6px 10px rgba(0, 0, 0, 0.9) !important;
+        -2px -2px 0 #125070,  
+         2px -2px 0 #125070,
+        -2px  2px 0 #125070,
+         2px  2px 0 #125070,
+        -4px  4px 0 #000000,
+         0px 10px 15px rgba(0, 0, 0, 0.9) !important;
 }
 
-/* Specific overrides for small screen viewports */
-@media screen and (max-width: 768px) {
-    .hero-box h1 {
-        font-size: 5.5vw !important; /* Forces text to shrink enough to fit within 2 lines */
-        -webkit-text-stroke: 1px #000000 !important; /* Thinner stroke on small screens */
-    }
-    
-    .hero-box {
-        padding: 1.5rem 1rem !important; /* Gives more horizontal room inside the container */
-        width: 95% !important;
-    }
-}
-
-/* General hero text */
+/* General hero subtext */
 .hero-box p {
     color: #ffffff !important;
     margin-bottom: 1rem !important;
@@ -153,14 +145,14 @@ main,
     padding-bottom: 0 !important;
 }
 
-/* Footer sits flush below Section 2 with dark teal text */
+/* Footer sits flush below Section 2 with deep teal blue text */
 footer,
 .site-footer {
     position: relative !important;
     width: 100% !important;
     background: #000000 !important;
     background-color: #000000 !important;
-    color: #125070 !important; /* Updated footer text color */
+    color: #125070 !important;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
     border-top: none !important;
@@ -195,27 +187,20 @@ nav,
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
-
     width: 100% !important;
     height: 122px !important;
-
     margin: 0 !important;
     padding: 0 !important;
-
     position: relative !important;
     overflow: visible !important;
 }
 
 .logo {
     margin-left: 3vw !important;
-
     height: 100% !important;
-
     display: inline-flex !important;
     align-items: center !important;
-
     text-decoration: none !important;
-
     z-index: 9997 !important;
 }
 
@@ -223,9 +208,7 @@ nav,
     height: 95% !important;
     width: auto !important;
     max-height: none !important;
-
     object-fit: contain !important;
-
     display: block !important;
 }
 
@@ -237,16 +220,11 @@ nav,
 .hamburger-btn {
     background: none !important;
     border: none !important;
-
     font-size: 2rem !important;
     line-height: 1 !important;
-
     color: #ffffff !important;
-
     cursor: pointer !important;
-
     padding: 0.5rem 1rem !important;
-
     transition: opacity 0.2s ease;
 
     &:hover {
@@ -254,17 +232,12 @@ nav,
     }
 }
 
-/* Hamburger button in the main header */
 .header-trigger {
     position: absolute !important;
-
     right: 1.5rem !important;
     top: 50% !important;
-
     transform: translateY(-50%) !important;
-
     margin: 0 !important;
-
     z-index: 999998 !important;
 }
 
@@ -276,89 +249,57 @@ nav,
 .nav-dropdown,
 div#nav-menu {
     position: fixed !important;
-
     top: 0 !important;
     right: 0 !important;
     bottom: auto !important;
     left: auto !important;
-
     width: 30vw !important;
-
     height: 100vh !important;
     height: 100dvh !important;
-
     margin: 0 !important;
-
     padding: 1.5rem 2rem !important;
-
     box-sizing: border-box !important;
-
     background: #080707 !important;
     background-color: #080707 !important;
     background-image: none !important;
-
     border-left: 1px solid rgba(255, 255, 255, 0.15);
-
     box-shadow: -6px 0 16px rgba(0, 0, 0, 0.4);
-
     z-index: 999999 !important;
-
     display: flex !important;
     flex-direction: column !important;
-
     justify-content: flex-start !important;
     align-items: flex-start !important;
-
     overflow-x: hidden !important;
     overflow-y: auto !important;
-
     transform: translateX(100%) !important;
-
-    transition:
-        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
     visibility: visible !important;
     opacity: 1 !important;
 }
 
-/* Open drawer */
 .nav-dropdown.active,
 div#nav-menu.active {
     transform: translateX(0) !important;
 }
 
-
-/* ==========================================================================
-   DRAWER HEADER / CLOSE BUTTON
-   ========================================================================== */
-
 .drawer-header {
     position: static !important;
-
     display: flex !important;
-
     justify-content: flex-start !important;
     align-items: flex-start !important;
-
     width: 100% !important;
-
     height: auto !important;
     min-height: 0 !important;
     max-height: none !important;
-
     margin: 0 0 2rem 0 !important;
     padding: 0 !important;
-
     flex: 0 0 auto !important;
 }
 
 .drawer-trigger {
     position: static !important;
-
     margin: 0 !important;
-
     padding: 0 .5rem !important;
-
     transform: none !important;
 }
 
@@ -371,136 +312,89 @@ div#nav-menu.active {
 .nav-links,
 ul.nav-links {
     position: static !important;
-
     top: auto !important;
     right: auto !important;
     bottom: auto !important;
     left: auto !important;
-
     transform: none !important;
-
     display: flex !important;
     flex-direction: column !important;
-
     justify-content: flex-start !important;
     align-items: flex-start !important;
-
     align-content: flex-start !important;
     align-self: flex-start !important;
-
     width: 100% !important;
-
     height: auto !important;
     min-height: 0 !important;
     max-height: none !important;
-
     margin: 0 !important;
     padding: 0 !important;
-
     gap: 1.5rem !important;
-
     flex: 0 0 auto !important;
-
     list-style: none !important;
-
     visibility: visible !important;
     opacity: 1 !important;
-
     background: transparent !important;
     background-color: transparent !important;
-
     box-shadow: none !important;
 }
-
-
-/* Individual navigation items */
 
 .nav-dropdown .nav-links li,
 .nav-links li,
 ul.nav-links li {
     position: static !important;
-
     top: auto !important;
     right: auto !important;
     bottom: auto !important;
     left: auto !important;
-
     transform: none !important;
-
     display: block !important;
-
     width: 100% !important;
-
     height: auto !important;
     min-height: 0 !important;
-
     margin: 0 !important;
     padding: 0 !important;
-
     flex: 0 0 auto !important;
-
     list-style: none !important;
-
     visibility: visible !important;
     opacity: 1 !important;
-
     background: transparent !important;
     background-color: transparent !important;
-
     border: none !important;
 }
-
-
-/* Navigation links themselves */
 
 .nav-dropdown .nav-links a,
 .nav-links a,
 ul.nav-links li a {
     position: static !important;
-
     top: auto !important;
     right: auto !important;
     bottom: auto !important;
     left: auto !important;
-
     display: block !important;
-
     width: auto !important;
     height: auto !important;
-
     margin: 0 !important;
     padding: 0.5rem 0 !important;
-
     transform: none !important;
-
     color: #ffffff !important;
-
     background: transparent !important;
     background-color: transparent !important;
-
     font-size: 1.25rem !important;
     font-weight: 600 !important;
-
     line-height: 1.2 !important;
-
     text-decoration: none !important;
-
     visibility: visible !important;
     opacity: 1 !important;
-
-    transition:
-        color 0.2s ease,
-        transform 0.2s ease !important;
+    transition: color 0.2s ease, transform 0.2s ease !important;
 }
 
 .nav-dropdown .nav-links a:hover,
 .nav-links a:hover,
 ul.nav-links li a:hover {
     color: #125070 !important;
-
     background: transparent !important;
     background-color: transparent !important;
-
     transform: translateX(4px) !important;
 }
 
@@ -511,47 +405,54 @@ ul.nav-links li a:hover {
 
 .nav-overlay {
     position: fixed !important;
-
     top: 0 !important;
     right: auto !important;
     bottom: auto !important;
     left: 0 !important;
-
     width: 100vw !important;
     height: 100vh !important;
     height: 100dvh !important;
-
     margin: 0 !important;
     padding: 0 !important;
-
     background-color: rgba(0, 0, 0, 0.6) !important;
-
     z-index: 999998 !important;
-
     opacity: 0 !important;
     visibility: hidden !important;
-
     pointer-events: none !important;
-
-    transition:
-        opacity 0.3s ease,
-        visibility 0.3s ease !important;
+    transition: opacity 0.3s ease, visibility 0.3s ease !important;
 }
 
 .nav-overlay.active {
     opacity: 1 !important;
-
     visibility: visible !important;
-
     pointer-events: auto !important;
 }
 
 
 /* ==========================================================================
-   MOBILE DRAWER
+   MOBILE MEDIA QUERIES & RESPONSIVE BREAKPOINTS
    ========================================================================== */
 
 @media screen and (max-width: 768px) {
+
+    .hero-box {
+        width: 96% !important;
+        max-width: 96% !important;
+        padding: 1.25rem 0.75rem !important;
+    }
+
+    /* Force mobile title to fit on 2 lines max */
+    .hero-box h1,
+    main .hero-box h1,
+    .hero .hero-box h1 {
+        font-size: 1.85rem !important;
+        -webkit-text-stroke: 1.5px #000000 !important;
+        text-shadow: 
+            -1px -1px 0 #125070,  
+             1px -1px 0 #125070,
+            -1px  1px 0 #125070,
+             1px  1px 0 #125070 !important;
+    }
 
     .nav-container {
         height: 90px !important;
@@ -568,37 +469,26 @@ ul.nav-links li a:hover {
     body > #nav-menu.nav-dropdown,
     body > div#nav-menu {
         position: fixed !important;
-
         top: 0 !important;
         right: 0 !important;
         bottom: auto !important;
         left: auto !important;
-
         width: 85vw !important;
-
         height: 100vh !important;
         height: 100dvh !important;
-
         margin: 0 !important;
-
         padding: 1rem !important;
-
         box-sizing: border-box !important;
-
         display: flex !important;
         flex-direction: column !important;
-
         justify-content: flex-start !important;
         align-items: flex-start !important;
         align-content: flex-start !important;
-
         overflow-x: hidden !important;
         overflow-y: auto !important;
-
         background: #080707 !important;
         background-color: #080707 !important;
         background-image: none !important;
-
         transform: translateX(100%) !important;
     }
 
@@ -609,23 +499,16 @@ ul.nav-links li a:hover {
 
     body > #nav-menu .drawer-header {
         position: static !important;
-
         display: flex !important;
-
         justify-content: flex-start !important;
         align-items: flex-start !important;
-
         width: 100% !important;
-
         height: auto !important;
         min-height: 0 !important;
         max-height: none !important;
-
         margin: 0 0 0.75rem 0 !important;
         padding: 0 !important;
-
         flex: 0 0 auto !important;
-
         transform: none !important;
     }
 
@@ -633,78 +516,53 @@ ul.nav-links li a:hover {
     body > #nav-menu .nav-links,
     body > #nav-menu ul {
         position: static !important;
-
         top: auto !important;
         right: auto !important;
         bottom: auto !important;
         left: auto !important;
-
         transform: none !important;
-
         display: flex !important;
         flex-direction: column !important;
-
         justify-content: flex-start !important;
         align-items: flex-start !important;
         align-content: flex-start !important;
-
         align-self: flex-start !important;
-
         width: 100% !important;
-
         height: auto !important;
         min-height: 0 !important;
         max-height: none !important;
-
         margin: 0 !important;
         padding: 0 !important;
-
         gap: 0.75rem !important;
-
         flex: 0 0 auto !important;
-
         list-style: none !important;
-
         visibility: visible !important;
         opacity: 1 !important;
-
         background: transparent !important;
         background-color: transparent !important;
-
         box-shadow: none !important;
     }
 
     body > #nav-menu ul.nav-links li,
     body > #nav-menu .nav-links li {
         position: static !important;
-
         top: auto !important;
         right: auto !important;
         bottom: auto !important;
         left: auto !important;
-
         transform: none !important;
-
         display: block !important;
-
         width: 100% !important;
-
         height: auto !important;
         min-height: 0 !important;
-
         margin: 0 !important;
         padding: 0 !important;
-
         flex: 0 0 auto !important;
-
         list-style: none !important;
-
         visibility: visible !important;
         opacity: 1 !important;
-
         background: transparent !important;
         background-color: transparent !important;
-
         border: none !important;
     }
 
@@ -712,35 +570,23 @@ ul.nav-links li a:hover {
     body > #nav-menu .nav-links li a,
     body > #nav-menu a {
         position: static !important;
-
         top: auto !important;
         right: auto !important;
         bottom: auto !important;
         left: auto !important;
-
         display: block !important;
-
         width: auto !important;
         height: auto !important;
-
         margin: 0 !important;
         padding: 0.25rem 0 !important;
-
         transform: none !important;
-
         color: #ffffff !important;
-
         background: transparent !important;
         background-color: transparent !important;
-
         font-size: 1.15rem !important;
-
         font-weight: 600 !important;
-
         line-height: 1.2 !important;
-
         text-decoration: none !important;
-
         visibility: visible !important;
         opacity: 1 !important;
     }
@@ -749,11 +595,18 @@ ul.nav-links li a:hover {
     body > #nav-menu .nav-links li a:hover,
     body > #nav-menu a:hover {
         color: #125070 !important;
-
         background: transparent !important;
         background-color: transparent !important;
-
         transform: translateX(4px) !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Extra shrink cap for smaller mobile displays */
+    .hero-box h1,
+    main .hero-box h1,
+    .hero .hero-box h1 {
+        font-size: 1.45rem !important;
     }
 }
 
@@ -764,24 +617,19 @@ ul.nav-links li a:hover {
 
 body > #nav-menu {
     position: fixed !important;
-
     top: 0 !important;
     right: 0 !important;
     bottom: auto !important;
     left: auto !important;
-
     margin: 0 !important;
-
     justify-content: flex-start !important;
     align-content: flex-start !important;
 }
 
 body > #nav-overlay {
     position: fixed !important;
-
     top: 0 !important;
     left: 0 !important;
-
     margin: 0 !important;
     padding: 0 !important;
 }
