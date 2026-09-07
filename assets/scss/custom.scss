@@ -20,7 +20,7 @@ canvas,
 
 
 /* ==========================================================================
-   SEQUENTIAL PHOTO SECTIONS (Photo 1 -> Photo 2 -> Footer)
+   DESKTOP SEQUENTIAL PHOTO SECTIONS (image1.JPG -> image2.jpeg -> Footer)
    ========================================================================== */
 
 /* Section 1: Hero / Top area with image1.JPG */
@@ -180,11 +180,13 @@ main .hero-box h1,
     margin-top: 0 !important;
 }
 
-/* Coach Image */
+/* Coach Image (image3.jpeg) */
 .about-coach-img {
-    width: 340px !important;
-    height: 360px !important;
+    width: 320px !important;
+    height: auto !important;
+    aspect-ratio: 3 / 4 !important; /* Vertical rectangle */
     object-fit: cover !important;
+    object-position: top center !important; /* Preserves head from being cropped */
     border-radius: 8px !important;
     border: 3px solid #8A99A6 !important;
     flex-shrink: 0 !important;
@@ -353,7 +355,7 @@ nav,
 
 
 /* ==========================================================================
-   HAMBURGER BUTTONS
+   HAMBURGER BUTTONS & NAVIGATION DRAWER
    ========================================================================== */
 
 .hamburger-btn {
@@ -379,11 +381,6 @@ nav,
     margin: 0 !important;
     z-index: 999998 !important;
 }
-
-
-/* ==========================================================================
-   OFF-CANVAS NAVIGATION DRAWER
-   ========================================================================== */
 
 .nav-dropdown,
 div#nav-menu {
@@ -442,89 +439,48 @@ div#nav-menu.active {
     transform: none !important;
 }
 
-
-/* ==========================================================================
-   NAVIGATION LINKS
-   ========================================================================== */
-
 .nav-dropdown .nav-links,
 .nav-links,
 ul.nav-links {
     position: static !important;
-    top: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    left: auto !important;
-    transform: none !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: flex-start !important;
     align-items: flex-start !important;
-    align-content: flex-start !important;
-    align-self: flex-start !important;
     width: 100% !important;
     height: auto !important;
-    min-height: 0 !important;
-    max-height: none !important;
     margin: 0 !important;
     padding: 0 !important;
     gap: 1.5rem !important;
-    flex: 0 0 auto !important;
     list-style: none !important;
     visibility: visible !important;
     opacity: 1 !important;
     background: transparent !important;
-    background-color: transparent !important;
-    box-shadow: none !important;
 }
 
 .nav-dropdown .nav-links li,
 .nav-links li,
 ul.nav-links li {
-    position: static !important;
-    top: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    left: auto !important;
-    transform: none !important;
     display: block !important;
     width: 100% !important;
-    height: auto !important;
-    min-height: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
-    flex: 0 0 auto !important;
     list-style: none !important;
-    visibility: visible !important;
-    opacity: 1 !important;
     background: transparent !important;
-    background-color: transparent !important;
     border: none !important;
 }
 
 .nav-dropdown .nav-links a,
 .nav-links a,
 ul.nav-links li a {
-    position: static !important;
-    top: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    left: auto !important;
     display: block !important;
-    width: auto !important;
-    height: auto !important;
-    margin: 0 !important;
     padding: 0.5rem 0 !important;
-    transform: none !important;
     color: #ffffff !important;
     background: transparent !important;
-    background-color: transparent !important;
     font-size: 1.25rem !important;
     font-weight: 600 !important;
     line-height: 1.2 !important;
     text-decoration: none !important;
-    visibility: visible !important;
-    opacity: 1 !important;
     transition: color 0.2s ease, transform 0.2s ease !important;
 }
 
@@ -533,26 +489,16 @@ ul.nav-links li a {
 ul.nav-links li a:hover {
     color: #125070 !important;
     background: transparent !important;
-    background-color: transparent !important;
     transform: translateX(4px) !important;
 }
-
-
-/* ==========================================================================
-   DARK BACKDROP OVERLAY
-   ========================================================================== */
 
 .nav-overlay {
     position: fixed !important;
     top: 0 !important;
-    right: auto !important;
-    bottom: auto !important;
     left: 0 !important;
     width: 100vw !important;
     height: 100vh !important;
     height: 100dvh !important;
-    margin: 0 !important;
-    padding: 0 !important;
     background-color: rgba(0, 0, 0, 0.6) !important;
     z-index: 999998 !important;
     opacity: 0 !important;
@@ -574,17 +520,82 @@ ul.nav-links li a:hover {
 
 @media screen and (max-width: 768px) {
 
-    /* Section 1 Hero Mobile Background */
+    /* --- MOBILE BACKGROUND STACKING SEQUENCE (mobile1 -> mobile2 -> mobile3) --- */
+
+    /* Section 1 Background: mobile1.jpeg */
     .hero::before,
     .section-first::before,
     main > section:first-of-type::before {
         background-image: url('/images/mobile1.jpeg') !important;
     }
 
-    /* CLEAR Section 2 outer background so mobile2 & mobile3 don't stretch across both */
-    .section-second::before,
-    main > section:nth-of-type(2)::before {
-        display: none !important;
+    /* Section 2 Wrapper: Creates background for mobile2.jpeg */
+    .section-second,
+    main > section:nth-of-type(2) {
+        min-height: auto !important;
+        padding: 2rem 1rem !important;
+
+        &::before {
+            background-image: url('/images/mobile2.jpeg') !important;
+        }
+    }
+
+    /* Additional Section created behind Client Box for mobile3.jpeg full-width background */
+    .mobile-section-3,
+    .section-second-content > .vertical-list-box {
+        position: relative !important;
+    }
+
+    /* Outer wrapper forces mobile2 into mobile3 background flow on Section 2 Content */
+    .section-second-content {
+        margin-top: 1rem !important;
+        flex-direction: column !important;
+        gap: 2rem !important;
+    }
+
+    /* 1) About the Coach Text Box (Keeps dark translucent styling) */
+    .about-coach-box {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        width: 100% !important;
+        min-height: auto !important;
+        padding: 1.5rem !important;
+        background-color: rgba(0, 0, 0, 0.8) !important; /* Preserved dark box */
+        border: 3px solid #125070 !important;
+        backdrop-filter: blur(4px) !important;
+    }
+
+    /* Coach Image (image3.jpeg): Vertical Rectangle */
+    .about-coach-img {
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 3 / 4 !important; /* Vertical Rectangle Frame */
+        border-radius: 8px !important;
+        object-fit: cover !important;
+        object-position: top center !important; /* Ensures coach's head is not cropped */
+        margin-bottom: 1rem !important;
+    }
+
+    /* 2) List of Clients Text Box (Sits on mobile3.jpeg section area) */
+    .vertical-list-box {
+        width: 100% !important;
+        min-height: auto !important;
+        margin-top: 0 !important;
+        align-self: center !important;
+        background-color: rgba(0, 0, 0, 0.8) !important; /* Preserved dark box */
+        border: 3px solid #125070 !important;
+        backdrop-filter: blur(4px) !important;
+    }
+
+    /* Mobile wrapper for section holding mobile3.jpeg background directly behind Client Box */
+    .mobile-bg-wrapper-3 {
+        width: 100% !important;
+        position: relative !important;
+        background-image: url('/images/mobile3.jpeg') !important;
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+        padding: 1rem 0 !important;
     }
 
     .hero-box {
@@ -606,53 +617,6 @@ ul.nav-links li a:hover {
              1px  1px 0 #125070 !important;
     }
 
-    /* Section 2 Mobile Stacking Container */
-    .section-second-content {
-        margin-top: 1rem !important;
-        flex-direction: column !important;
-        gap: 2rem !important;
-    }
-
-    /* 1) About the Coach Box tied directly to mobile2.jpeg */
-    .about-coach-box {
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        width: 100% !important;
-        min-height: auto !important;
-        padding: 1.5rem !important;
-
-        /* Dark tint layer + mobile2 background image */
-        background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('/images/mobile2.jpeg') !important;
-        background-size: cover !important;
-        background-position: center center !important;
-        background-repeat: no-repeat !important;
-    }
-
-    /* Coach Image (image3.jpeg): Wide Rectangle Shape so head isn't cropped */
-    .about-coach-img {
-        width: 100% !important;
-        height: auto !important;
-        aspect-ratio: 16 / 9 !important;
-        border-radius: 0 !important; /* Rectangle box sharp edges */
-        object-fit: cover !important;
-        object-position: top center !important; /* Prioritizes head/face framing */
-        margin-bottom: 1rem !important;
-    }
-
-    /* 2) List of Clients Box tied directly to mobile3.jpeg */
-    .vertical-list-box {
-        width: 100% !important;
-        min-height: auto !important;
-        margin-top: 0 !important;
-        align-self: center !important;
-
-        /* Dark tint layer + mobile3 background image */
-        background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('/images/mobile3.jpeg') !important;
-        background-size: cover !important;
-        background-position: center center !important;
-        background-repeat: no-repeat !important;
-    }
-
     .nav-container {
         height: 90px !important;
     }
@@ -670,133 +634,17 @@ ul.nav-links li a:hover {
         position: fixed !important;
         top: 0 !important;
         right: 0 !important;
-        bottom: auto !important;
-        left: auto !important;
         width: 85vw !important;
         height: 100vh !important;
         height: 100dvh !important;
-        margin: 0 !important;
         padding: 1rem !important;
-        box-sizing: border-box !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: flex-start !important;
-        align-items: flex-start !important;
-        align-content: flex-start !important;
-        overflow-x: hidden !important;
-        overflow-y: auto !important;
         background: #080707 !important;
-        background-color: #080707 !important;
-        background-image: none !important;
         transform: translateX(100%) !important;
     }
 
     body > #nav-menu.nav-dropdown.active,
     body > div#nav-menu.active {
         transform: translateX(0) !important;
-    }
-
-    body > #nav-menu .drawer-header {
-        position: static !important;
-        display: flex !important;
-        justify-content: flex-start !important;
-        align-items: flex-start !important;
-        width: 100% !important;
-        height: auto !important;
-        min-height: 0 !important;
-        max-height: none !important;
-        margin: 0 0 0.75rem 0 !important;
-        padding: 0 !important;
-        flex: 0 0 auto !important;
-        transform: none !important;
-    }
-
-    body > #nav-menu ul.nav-links,
-    body > #nav-menu .nav-links,
-    body > #nav-menu ul {
-        position: static !important;
-        top: auto !important;
-        right: auto !important;
-        bottom: auto !important;
-        left: auto !important;
-        transform: none !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: flex-start !important;
-        align-items: flex-start !important;
-        align-content: flex-start !important;
-        align-self: flex-start !important;
-        width: 100% !important;
-        height: auto !important;
-        min-height: 0 !important;
-        max-height: none !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        gap: 0.75rem !important;
-        flex: 0 0 auto !important;
-        list-style: none !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        background: transparent !important;
-        background-color: transparent !important;
-        box-shadow: none !important;
-    }
-
-    body > #nav-menu ul.nav-links li,
-    body > #nav-menu .nav-links li {
-        position: static !important;
-        top: auto !important;
-        right: auto !important;
-        bottom: auto !important;
-        left: auto !important;
-        transform: none !important;
-        display: block !important;
-        width: 100% !important;
-        height: auto !important;
-        min-height: 0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        flex: 0 0 auto !important;
-        list-style: none !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        background: transparent !important;
-        background-color: transparent !important;
-        border: none !important;
-    }
-
-    body > #nav-menu ul.nav-links li a,
-    body > #nav-menu .nav-links li a,
-    body > #nav-menu a {
-        position: static !important;
-        top: auto !important;
-        right: auto !important;
-        bottom: auto !important;
-        left: auto !important;
-        display: block !important;
-        width: auto !important;
-        height: auto !important;
-        margin: 0 !important;
-        padding: 0.25rem 0 !important;
-        transform: none !important;
-        color: #ffffff !important;
-        background: transparent !important;
-        background-color: transparent !important;
-        font-size: 1.15rem !important;
-        font-weight: 600 !important;
-        line-height: 1.2 !important;
-        text-decoration: none !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-    }
-
-    body > #nav-menu ul.nav-links li a:hover,
-    body > #nav-menu .nav-links li a:hover,
-    body > #nav-menu a:hover {
-        color: #125070 !important;
-        background: transparent !important;
-        background-color: transparent !important;
-        transform: translateX(4px) !important;
     }
 }
 
