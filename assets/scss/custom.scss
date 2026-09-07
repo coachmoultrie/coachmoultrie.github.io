@@ -2,6 +2,10 @@
    GLOBAL BRANDING & BACKGROUND OVERRIDES
    ========================================================================== */
 
+html {
+    scroll-behavior: smooth !important;
+}
+
 html,
 body {
     margin: 0 !important;
@@ -20,7 +24,7 @@ canvas,
 
 
 /* ==========================================================================
-   DESKTOP SEQUENTIAL PHOTO SECTIONS (image1.JPG -> image2.jpeg -> Footer)
+   DESKTOP SEQUENTIAL PHOTO SECTIONS
    ========================================================================== */
 
 /* Section 1: Hero / Top area with image1.JPG */
@@ -46,14 +50,12 @@ main > section:first-of-type {
         background-position: center center !important;
         background-repeat: no-repeat !important;
         background-size: cover !important;
-        
-        /* Grayscale & brightness applied ONLY to background image */
         filter: grayscale(60%) brightness(85%) !important;
         z-index: 1 !important;
     }
 }
 
-/* Section 2: Secondary area with image2.jpeg directly underneath */
+/* Section 2: Secondary area with image2.jpeg */
 .section-second,
 main > section:nth-of-type(2) {
     position: relative !important;
@@ -79,8 +81,6 @@ main > section:nth-of-type(2) {
         background-position: center center !important;
         background-repeat: no-repeat !important;
         background-size: cover !important;
-        
-        /* Grayscale & brightness applied ONLY to background image */
         filter: grayscale(60%) brightness(85%) !important;
         z-index: 1 !important;
     }
@@ -103,7 +103,7 @@ main > section:nth-of-type(2) {
 
 
 /* ==========================================================================
-   HERO TITLE (LOGO-MATCHED ATHLETIC BLOCK FONT)
+   HERO TITLE & BUTTONS
    ========================================================================== */
 
 .hero-box h1,
@@ -117,15 +117,9 @@ main .hero-box h1,
     margin-bottom: 1rem !important;
     white-space: normal !important;
     word-break: keep-all !important;
-
-    /* Silver metallic fill */
     color: #8A99A6 !important;
     -webkit-text-fill-color: #8A99A6 !important;
-
-    /* 3px Solid Black outer stroke */
     -webkit-text-stroke: 3px #000000 !important;
-
-    /* Multi-layered dark blue outline + 3D bevel shadow */
     text-shadow: 
         -2px -2px 0 #125070,  
          2px -2px 0 #125070,
@@ -135,18 +129,49 @@ main .hero-box h1,
          0px 10px 15px rgba(0, 0, 0, 0.9) !important;
 }
 
-/* General hero subtext */
 .hero-box p {
     color: #ffffff !important;
-    margin-bottom: 1rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+/* Button Container & Universal Blue Glow Styles */
+.hero-buttons {
+    display: flex !important;
+    gap: 1rem !important;
+    flex-wrap: wrap !important;
+}
+
+.btn,
+.btn-learn-more,
+.btn-social {
+    display: inline-block !important;
+    padding: 0.8rem 1.75rem !important;
+    font-size: 1.1rem !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    border-radius: 6px !important;
+    transition: all 0.3s ease !important;
+    background-color: #125070 !important; /* Brand Accent Blue */
+    color: #ffffff !important;
+    border: 2px solid #125070 !important;
+    box-shadow: 0 0 10px rgba(18, 80, 112, 0.4) !important;
+
+    /* Shared Blue Hover Glow */
+    &:hover {
+        background-color: #17638a !important;
+        border-color: #8A99A6 !important;
+        color: #ffffff !important;
+        box-shadow: 0 0 18px rgba(18, 80, 112, 0.95), 0 0 30px rgba(18, 80, 112, 0.7) !important;
+        transform: translateY(-2px) !important;
+    }
 }
 
 
 /* ==========================================================================
-   SECTION 2: ABOUT THE COACH & LIST OF CLIENTS LAYOUT
+   SECTION 2: ABOUT THE COACH & LIST OF CLIENTS
    ========================================================================== */
 
-/* Full-width content wrapper */
 .section-second-content {
     position: relative !important;
     z-index: 2 !important;
@@ -160,7 +185,6 @@ main .hero-box h1,
     gap: 2rem !important;
 }
 
-/* Far Left Box: About the Coach */
 .about-coach-box {
     background-color: rgba(0, 0, 0, 0.8) !important;
     border: 3px solid #125070 !important;
@@ -178,15 +202,15 @@ main .hero-box h1,
     align-self: flex-start !important;
     margin-left: 0 !important;
     margin-top: 0 !important;
+    scroll-margin-top: 140px !important; /* Offset for header scroll targeting */
 }
 
-/* Coach Image (image3.jpeg) */
 .about-coach-img {
     width: 320px !important;
     height: auto !important;
-    aspect-ratio: 3 / 4 !important; /* Vertical rectangle */
+    aspect-ratio: 3 / 4 !important;
     object-fit: cover !important;
-    object-position: top center !important; /* Preserves head from being cropped */
+    object-position: top center !important;
     border-radius: 8px !important;
     border: 3px solid #8A99A6 !important;
     flex-shrink: 0 !important;
@@ -214,7 +238,7 @@ main .hero-box h1,
     }
 }
 
-/* Far Right Box: List of Clients (15px below top of Coach Box) */
+/* List of Clients Styling */
 .vertical-list-box {
     background-color: rgba(0, 0, 0, 0.8) !important;
     border: 3px solid #125070 !important;
@@ -254,16 +278,33 @@ main .hero-box h1,
             margin-bottom: 1.25rem !important;
             line-height: 1.6 !important;
             
-            /* External Profile Hyperlink Styling */
+            /* Client Link Blue Color + Black Text Stroke Outline + Blue Hover Glow */
             a {
-                color: #125070 !important;          /* Accent Blue */
-                font-weight: bold !important;       /* Bold text */
-                text-decoration: none !important;   /* No underline */
-                transition: color 0.2s ease !important;
+                color: #125070 !important;
+                font-weight: bold !important;
+                text-decoration: none !important;
+                display: inline-block !important;
+                
+                /* Small Black Outer Outline */
+                -webkit-text-stroke: 0.6px #000000 !important;
+                text-shadow: 
+                    -1px -1px 0 #000,  
+                     1px -1px 0 #000,
+                    -1px  1px 0 #000,
+                     1px  1px 0 #000 !important;
+                
+                transition: all 0.2s ease !important;
 
                 &:hover {
-                    color: #8A99A6 !important;      /* Silver hover effect */
-                    text-decoration: none !important;
+                    color: #125070 !important;
+                    text-shadow: 
+                        0 0 10px rgba(18, 80, 112, 0.9),
+                        0 0 18px rgba(18, 80, 112, 0.7),
+                        -1px -1px 0 #000,  
+                         1px -1px 0 #000,
+                        -1px  1px 0 #000,
+                         1px  1px 0 #000 !important;
+                    transform: translateX(3px) !important;
                 }
             }
 
@@ -276,7 +317,7 @@ main .hero-box h1,
 
 
 /* ==========================================================================
-   FOOTER & GENERAL LAYOUT CLEANUP
+   FOOTER & GENERAL LAYOUT
    ========================================================================== */
 
 main,
@@ -298,13 +339,24 @@ footer,
     margin-bottom: 0 !important;
     border-top: none !important;
     z-index: 10 !important;
+    padding: 1.5rem 0 !important;
+    text-align: center !important;
 }
 
+/* Footer Accent Blue Color & Blue Glow Effect */
 footer a,
 .site-footer a,
 footer p,
 .site-footer p {
     color: #125070 !important;
+    font-weight: 600 !important;
+    margin: 0 !important;
+    transition: all 0.2s ease !important;
+}
+
+footer a:hover,
+.site-footer a:hover {
+    text-shadow: 0 0 12px rgba(18, 80, 112, 0.9) !important;
 }
 
 
@@ -470,6 +522,7 @@ ul.nav-links li {
     border: none !important;
 }
 
+/* Hamburger Link Hover Effect */
 .nav-dropdown .nav-links a,
 .nav-links a,
 ul.nav-links li a {
@@ -481,14 +534,14 @@ ul.nav-links li a {
     font-weight: 600 !important;
     line-height: 1.2 !important;
     text-decoration: none !important;
-    transition: color 0.2s ease, transform 0.2s ease !important;
+    transition: all 0.2s ease !important;
 }
 
 .nav-dropdown .nav-links a:hover,
 .nav-links a:hover,
 ul.nav-links li a:hover {
     color: #125070 !important;
-    background: transparent !important;
+    text-shadow: 0 0 12px rgba(18, 80, 112, 0.95), 0 0 20px rgba(18, 80, 112, 0.6) !important;
     transform: translateX(4px) !important;
 }
 
@@ -520,16 +573,12 @@ ul.nav-links li a:hover {
 
 @media screen and (max-width: 768px) {
 
-    /* --- MOBILE BACKGROUND STACKING SEQUENCE (mobile1.jpeg -> mobile23.jpeg) --- */
-
-    /* Section 1 Background: mobile1.jpeg */
     .hero::before,
     .section-first::before,
     main > section:first-of-type::before {
         background-image: url('/images/mobile1.jpeg') !important;
     }
 
-    /* Section 2 Wrapper Background: Single continuous background via mobile23.jpeg */
     .section-second,
     main > section:nth-of-type(2) {
         min-height: auto !important;
@@ -540,14 +589,12 @@ ul.nav-links li a:hover {
         }
     }
 
-    /* Stacking Section 2 Content vertically over mobile23.jpeg */
     .section-second-content {
         margin-top: 1rem !important;
         flex-direction: column !important;
         gap: 2rem !important;
     }
 
-    /* 1) About the Coach Text Box */
     .about-coach-box {
         flex-direction: column !important;
         align-items: flex-start !important;
@@ -559,18 +606,16 @@ ul.nav-links li a:hover {
         backdrop-filter: blur(4px) !important;
     }
 
-    /* Coach Image (image3.jpeg): Vertical Rectangle */
     .about-coach-img {
         width: 100% !important;
         height: auto !important;
-        aspect-ratio: 3 / 4 !important; /* Vertical Rectangle Frame */
+        aspect-ratio: 3 / 4 !important;
         border-radius: 8px !important;
         object-fit: cover !important;
-        object-position: top center !important; /* Ensures coach's head is not cropped */
+        object-position: top center !important;
         margin-bottom: 1rem !important;
     }
 
-    /* 2) List of Clients Text Box */
     .vertical-list-box {
         width: 100% !important;
         min-height: auto !important;
@@ -587,7 +632,6 @@ ul.nav-links li a:hover {
         padding: 1.25rem 0.75rem !important;
     }
 
-    /* Mobile Title Scale */
     .hero-box h1,
     main .hero-box h1,
     .hero .hero-box h1 {
@@ -598,6 +642,17 @@ ul.nav-links li a:hover {
              1px -1px 0 #125070,
             -1px  1px 0 #125070,
              1px  1px 0 #125070 !important;
+    }
+
+    .hero-buttons {
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    .btn {
+        text-align: center !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
 
     .nav-container {
