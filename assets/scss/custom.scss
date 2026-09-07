@@ -581,10 +581,10 @@ ul.nav-links li a:hover {
         background-image: url('/images/mobile1.jpeg') !important;
     }
 
-    /* Clear Section 2 overall background so individual boxes house their images */
+    /* CLEAR Section 2 outer background so mobile2 & mobile3 don't stretch across both */
     .section-second::before,
     main > section:nth-of-type(2)::before {
-        background-image: none !important;
+        display: none !important;
     }
 
     .hero-box {
@@ -613,40 +613,41 @@ ul.nav-links li a:hover {
         gap: 2rem !important;
     }
 
-    /* About the Coach Box tied to mobile2.jpeg */
+    /* 1) About the Coach Box tied directly to mobile2.jpeg */
     .about-coach-box {
         flex-direction: column !important;
         align-items: flex-start !important;
         width: 100% !important;
         min-height: auto !important;
         padding: 1.5rem !important;
-        
-        /* mobile2.jpeg background settings */
-        background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/images/mobile2.jpeg') !important;
+
+        /* Dark tint layer + mobile2 background image */
+        background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('/images/mobile2.jpeg') !important;
         background-size: cover !important;
         background-position: center center !important;
         background-repeat: no-repeat !important;
     }
 
-    /* Coach Image: Rectangular Box on Mobile */
+    /* Coach Image (image3.jpeg): Wide Rectangle Shape so head isn't cropped */
     .about-coach-img {
         width: 100% !important;
         height: auto !important;
         aspect-ratio: 16 / 9 !important;
-        border-radius: 0 !important; /* Sharpened corners for rectangle box */
+        border-radius: 0 !important; /* Rectangle box sharp edges */
         object-fit: cover !important;
+        object-position: top center !important; /* Prioritizes head/face framing */
         margin-bottom: 1rem !important;
     }
 
-    /* List of Clients Box tied to mobile3.jpeg */
+    /* 2) List of Clients Box tied directly to mobile3.jpeg */
     .vertical-list-box {
         width: 100% !important;
         min-height: auto !important;
         margin-top: 0 !important;
         align-self: center !important;
 
-        /* mobile3.jpeg background settings */
-        background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/images/mobile3.jpeg') !important;
+        /* Dark tint layer + mobile3 background image */
+        background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('/images/mobile3.jpeg') !important;
         background-size: cover !important;
         background-position: center center !important;
         background-repeat: no-repeat !important;
