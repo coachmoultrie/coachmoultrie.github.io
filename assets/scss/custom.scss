@@ -33,7 +33,7 @@ main > section:first-of-type {
     box-sizing: border-box !important;
     border: 10px solid #000000 !important;
     overflow: hidden !important;
-    filter: none !important; /* Keeps text inside section at 100% full color */
+    filter: none !important;
 
     &::before {
         content: '' !important;
@@ -76,39 +76,6 @@ main > section:nth-of-type(2) {
         width: 100% !important;
         height: 100% !important;
         background-image: url('/images/image2.jpeg') !important;
-        background-position: center center !important;
-        background-repeat: no-repeat !important;
-        background-size: cover !important;
-        
-        /* Grayscale & brightness applied ONLY to background image */
-        filter: grayscale(60%) brightness(85%) !important;
-        z-index: 1 !important;
-    }
-}
-
-/* Section 3: Third area (if present) */
-.section-third,
-main > section:nth-of-type(3) {
-    position: relative !important;
-    min-height: 100vh !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    border: 10px solid #000000 !important;
-    overflow: hidden !important;
-    filter: none !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: flex-start !important;
-    padding: 3rem 2rem !important;
-
-    &::before {
-        content: '' !important;
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        background-image: url('/images/image3.jpeg') !important;
         background-position: center center !important;
         background-repeat: no-repeat !important;
         background-size: cover !important;
@@ -189,7 +156,7 @@ main .hero-box h1,
     display: flex !important;
     flex-direction: row !important;
     justify-content: space-between !important;
-    align-items: flex-start !important; /* Aligns both boxes at the top */
+    align-items: flex-start !important;
     gap: 2rem !important;
 }
 
@@ -245,7 +212,7 @@ main .hero-box h1,
     }
 }
 
-/* Far Right Box: List of Clients (Positioned 15px below top of Coach Box) */
+/* Far Right Box: List of Clients (15px below top of Coach Box) */
 .vertical-list-box {
     background-color: rgba(0, 0, 0, 0.8) !important;
     border: 3px solid #125070 !important;
@@ -254,7 +221,7 @@ main .hero-box h1,
     width: 420px !important;
     min-height: 55vh !important;
     align-self: flex-start !important;
-    margin-top: 15px !important;        /* Moves top edge 15px down from Coach box */
+    margin-top: 15px !important;
     margin-right: 0 !important;
     backdrop-filter: blur(4px) !important;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6) !important;
@@ -607,21 +574,17 @@ ul.nav-links li a:hover {
 
 @media screen and (max-width: 768px) {
 
-    /* Mobile Background Image Overrides */
+    /* Section 1 Hero Mobile Background */
     .hero::before,
     .section-first::before,
     main > section:first-of-type::before {
         background-image: url('/images/mobile1.jpeg') !important;
     }
 
+    /* Clear Section 2 overall background so individual boxes house their images */
     .section-second::before,
     main > section:nth-of-type(2)::before {
-        background-image: url('/images/mobile2.jpeg') !important;
-    }
-
-    .section-third::before,
-    main > section:nth-of-type(3)::before {
-        background-image: url('/images/mobile3.jpeg') !important;
+        background-image: none !important;
     }
 
     .hero-box {
@@ -643,30 +606,50 @@ ul.nav-links li a:hover {
              1px  1px 0 #125070 !important;
     }
 
-    /* Section 2 Mobile Stacking */
+    /* Section 2 Mobile Stacking Container */
     .section-second-content {
         margin-top: 1rem !important;
         flex-direction: column !important;
+        gap: 2rem !important;
     }
 
+    /* About the Coach Box tied to mobile2.jpeg */
     .about-coach-box {
         flex-direction: column !important;
         align-items: flex-start !important;
         width: 100% !important;
         min-height: auto !important;
         padding: 1.5rem !important;
+        
+        /* mobile2.jpeg background settings */
+        background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/images/mobile2.jpeg') !important;
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
     }
 
+    /* Coach Image: Rectangular Box on Mobile */
     .about-coach-img {
         width: 100% !important;
-        height: 240px !important;
+        height: auto !important;
+        aspect-ratio: 16 / 9 !important;
+        border-radius: 0 !important; /* Sharpened corners for rectangle box */
+        object-fit: cover !important;
+        margin-bottom: 1rem !important;
     }
 
+    /* List of Clients Box tied to mobile3.jpeg */
     .vertical-list-box {
         width: 100% !important;
         min-height: auto !important;
-        margin-top: 1.5rem !important;
+        margin-top: 0 !important;
         align-self: center !important;
+
+        /* mobile3.jpeg background settings */
+        background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/images/mobile3.jpeg') !important;
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
     }
 
     .nav-container {
