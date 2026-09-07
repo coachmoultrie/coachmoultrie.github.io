@@ -520,7 +520,7 @@ ul.nav-links li a:hover {
 
 @media screen and (max-width: 768px) {
 
-    /* --- MOBILE BACKGROUND STACKING SEQUENCE (mobile1 -> mobile2 -> mobile3) --- */
+    /* --- MOBILE BACKGROUND STACKING SEQUENCE (mobile1.jpeg -> mobile23.jpeg) --- */
 
     /* Section 1 Background: mobile1.jpeg */
     .hero::before,
@@ -529,38 +529,32 @@ ul.nav-links li a:hover {
         background-image: url('/images/mobile1.jpeg') !important;
     }
 
-    /* Section 2 Wrapper: Creates background for mobile2.jpeg */
+    /* Section 2 Wrapper Background: Single continuous background via mobile23.jpeg */
     .section-second,
     main > section:nth-of-type(2) {
         min-height: auto !important;
         padding: 2rem 1rem !important;
 
         &::before {
-            background-image: url('/images/mobile2.jpeg') !important;
+            background-image: url('/images/mobile23.jpeg') !important;
         }
     }
 
-    /* Additional Section created behind Client Box for mobile3.jpeg full-width background */
-    .mobile-section-3,
-    .section-second-content > .vertical-list-box {
-        position: relative !important;
-    }
-
-    /* Outer wrapper forces mobile2 into mobile3 background flow on Section 2 Content */
+    /* Stacking Section 2 Content vertically over mobile23.jpeg */
     .section-second-content {
         margin-top: 1rem !important;
         flex-direction: column !important;
         gap: 2rem !important;
     }
 
-    /* 1) About the Coach Text Box (Keeps dark translucent styling) */
+    /* 1) About the Coach Text Box */
     .about-coach-box {
         flex-direction: column !important;
         align-items: flex-start !important;
         width: 100% !important;
         min-height: auto !important;
         padding: 1.5rem !important;
-        background-color: rgba(0, 0, 0, 0.8) !important; /* Preserved dark box */
+        background-color: rgba(0, 0, 0, 0.8) !important;
         border: 3px solid #125070 !important;
         backdrop-filter: blur(4px) !important;
     }
@@ -576,26 +570,15 @@ ul.nav-links li a:hover {
         margin-bottom: 1rem !important;
     }
 
-    /* 2) List of Clients Text Box (Sits on mobile3.jpeg section area) */
+    /* 2) List of Clients Text Box */
     .vertical-list-box {
         width: 100% !important;
         min-height: auto !important;
         margin-top: 0 !important;
         align-self: center !important;
-        background-color: rgba(0, 0, 0, 0.8) !important; /* Preserved dark box */
+        background-color: rgba(0, 0, 0, 0.8) !important;
         border: 3px solid #125070 !important;
         backdrop-filter: blur(4px) !important;
-    }
-
-    /* Mobile wrapper for section holding mobile3.jpeg background directly behind Client Box */
-    .mobile-bg-wrapper-3 {
-        width: 100% !important;
-        position: relative !important;
-        background-image: url('/images/mobile3.jpeg') !important;
-        background-size: cover !important;
-        background-position: center center !important;
-        background-repeat: no-repeat !important;
-        padding: 1rem 0 !important;
     }
 
     .hero-box {
